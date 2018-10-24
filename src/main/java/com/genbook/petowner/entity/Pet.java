@@ -13,13 +13,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @JsonIgnoreProperties("new")
-@Data
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
@@ -35,5 +33,30 @@ public class Pet extends AbstractPersistable<Long> {
   @JsonProperty("ownerId")
   @ManyToOne(cascade=CascadeType.PERSIST)
   private Owner owner;
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getBirthday() {
+    return birthday;
+  }
+
+  public void setBirthday(String birthday) {
+    this.birthday = birthday;
+  }
+
+  public Owner getOwner() {
+    return owner;
+  }
+
+  public void setOwner(Owner owner) {
+    this.owner = owner;
+  }
+  
   
 }

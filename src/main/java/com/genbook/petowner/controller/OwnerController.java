@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.genbook.petowner.dto.OwnerDto;
 import com.genbook.petowner.entity.Owner;
+import com.genbook.petowner.mapper.OwnerMapper;
 import com.genbook.petowner.repository.OwnerRepository;
+
 
 @RestController
 @CrossOrigin
@@ -19,10 +22,11 @@ public class OwnerController {
   private OwnerRepository ownerRepository;
 	
   @GetMapping("/owners")
-  public @ResponseBody List<Owner> get() {
+  public @ResponseBody List<OwnerDto> get() {
 
-    List<Owner> findAll = ownerRepository.findAll();
-    return findAll;
+    List<Owner> owners = ownerRepository.findAll();
+    owners.stream().forEach(owner -> owner.getPets());
+    return OwnerMapper.map(owners);
 
   }
 
