@@ -1,0 +1,11 @@
+debug: true
+
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    name: genbook
+    username: genbook
+    password: genbook
+    url: jdbc:h2:mem:genbook;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;
