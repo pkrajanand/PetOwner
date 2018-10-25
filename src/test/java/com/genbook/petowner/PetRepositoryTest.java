@@ -45,8 +45,10 @@ public class PetRepositoryTest {
 
     Pet saved = petRepository.save(pet1);
     
-    Pet expectedSavedPet = new Pet(1L, "pet1", "16/05/1999", owner1);
-    assertThat(expectedSavedPet).isEqualTo(saved);
+    assertThat(saved.getBirthday()).isEqualTo("16/05/1999");
+    assertThat(saved.getName()).isEqualTo("pet1");
+    assertThat(saved.getOwner().getId()).isEqualTo(-1L);
+    assertThat(saved.getId()).isNotNull();
 
     assertThat(petRepository.findAll()).hasSize(5);
   }
