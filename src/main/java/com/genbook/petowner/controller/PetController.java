@@ -47,7 +47,7 @@ public class PetController {
   @PostMapping("/pets")
   public ResponseEntity<Pet> create(@Valid @RequestBody Pet pet) throws URISyntaxException {
     
-    log.info("Request to create group: {}", pet);
+    log.info("Request to create Pet: {}", pet);
 
     Optional<Owner> owner = ownerRepository.findById(pet.getOwner().getId());
     if (owner.isPresent()) {

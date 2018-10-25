@@ -13,13 +13,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 @JsonIgnoreProperties("new")
-@NoArgsConstructor
-@RequiredArgsConstructor
 @Entity
 @Table(name = "pets")
 public class Pet extends AbstractPersistable<Long> {
@@ -33,6 +29,22 @@ public class Pet extends AbstractPersistable<Long> {
   @JsonProperty("ownerId")
   @ManyToOne(cascade=CascadeType.PERSIST)
   private Owner owner;
+
+  public Pet() {}
+  
+  public Pet(Long id, String name, String birthday, Owner owner) {
+    super();
+    this.setId(id);
+    this.name = name;
+    this.birthday = birthday;
+    this.owner = owner;
+  }
+
+  public Pet(String name, String birthday, Owner owner) {
+    this.name = name;
+    this.birthday = birthday;
+    this.owner = owner;
+  }
 
   public String getName() {
     return name;

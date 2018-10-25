@@ -12,12 +12,10 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @JsonIgnoreProperties("new")
-@NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
 @Table(name = "owners")
@@ -31,6 +29,22 @@ public class Owner extends AbstractPersistable<Long> {
   @OneToMany(fetch = FetchType.LAZY,
       mappedBy = "owner", cascade=CascadeType.ALL)
   private List<Pet> pets;
+
+  public Owner() {}
+  
+  public Owner(Long id, String firstName, String lastName, String city) {
+    super();
+    this.setId(id);
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.city = city;
+  }
+
+  public Owner(String firstName, String lastName, String city) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.city = city;
+  }
 
   public String getFirstName() {
     return firstName;
