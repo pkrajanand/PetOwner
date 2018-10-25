@@ -1,5 +1,6 @@
 package com.genbook.petowner.dto;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import com.genbook.petowner.entity.Owner;
@@ -9,7 +10,7 @@ public class OwnerDto {
   private String firstName;
   private String lastName;
   private String city;
-  private Object petIds;
+  private List<Long> petIds;
   private Long id;
 
   public OwnerDto(Owner owner) {
@@ -17,7 +18,12 @@ public class OwnerDto {
     firstName = owner.getFirstName();
     lastName = owner.getLastName();
     city = owner.getCity();
-    petIds = owner.getPets().stream().map(pet -> pet.getId()).collect(Collectors.toList());
+    if (owner.getPets() != null) {
+      petIds = owner.getPets().stream().map(pet -> pet.getId()).collect(Collectors.toList());  
+    } else {
+      petIds = null;
+    }
+    
   }
 
   public Long getId() {
@@ -56,7 +62,7 @@ public class OwnerDto {
     return petIds;
   }
 
-  public void setPetIds(Object petIds) {
+  public void setPetIds(List<Long> petIds) {
     this.petIds = petIds;
   }
 
