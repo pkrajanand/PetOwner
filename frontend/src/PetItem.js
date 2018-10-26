@@ -30,7 +30,6 @@ class PetItem extends Component {
 
     updateNewPetName(e) {
         this.setState({'newPetName': e.target.value});
-        console.log (this.state.newPetName);
     }
 
     updateNewPetBirthday(e) {
