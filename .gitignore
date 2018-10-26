@@ -27,3 +27,4 @@
 ._.gitignore
 .gitignore
 yarn.lock
+.eslintrc
