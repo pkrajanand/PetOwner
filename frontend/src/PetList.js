@@ -18,9 +18,8 @@ class PetList extends Component {
     }
 
     handleAddPetItem(pet, pets){
-        var newArray = pets.slice();    
-        newArray.push(pet);   
-        this.setState({pets:newArray});
+        pets.push(pet);   
+        this.setState({pets:pets});
     }
 
     render() {

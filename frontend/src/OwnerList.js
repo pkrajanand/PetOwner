@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Container, Table } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import {Container, Table } from 'reactstrap';
 import PetList from './PetList';
 
 class OwnerList extends Component {
     constructor(props) {
         super(props);
         this.state = { owners: [], isLoading: true };
-        // this.add = this.add.bind(this);
     }
 
     componentDidMount() {
