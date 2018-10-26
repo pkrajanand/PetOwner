@@ -25,3 +25,5 @@
 /.nb-gradle/
 ._import.sql
 ._.gitignore
+.gitignore
+yarn.lock
