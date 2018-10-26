@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Container, Table } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Container, Table } from 'reactstrap';
+import PetItem from './PetItem';
 
 class PetList extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = { pets: [], isLoading: true };
-        // this.add = this.add.bind(this);
     }
 
     componentDidMount() {
@@ -18,9 +17,15 @@ class PetList extends Component {
             .then(data => this.setState({ pets: data, isLoading: false }));
     }
 
+    handleAddPetItem(pet, pets){
+        var newArray = pets.slice();    
+        newArray.push(pet);   
+        this.setState({pets:newArray});
+    }
+
     render() {
         const { pets, isLoading } = this.state;
-        const { petIds } = this.props;
+        const { petIds, ownerId } = this.props;
 
         if (isLoading) {
             return <p>Loading Pets...</p>;
@@ -29,24 +34,15 @@ class PetList extends Component {
         const petList = pets
             .filter(pet => petIds.find(pId => pId === pet.id) )
             .map (pet => {
-                return <tr>
-                        <td>{pet.id}</td>
-                        <td>{pet.name}</td>
-                        <td>{pet.birthday}</td>
-                    </tr>
+                return <PetItem pet={pet} ownerId={ownerId} pets={pets}></PetItem>
         });
+
+        petList.push(<PetItem ownerId={ownerId} onPetAdded={pet => this.handleAddPetItem(pet, pets)}></PetItem>);
 
         return (
             <div>
                 <Container fluid>
-                    <Table className="mt-4">
-                    <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Birthday</th>
-                            </tr>
-                        </thead>
+                    <Table>
                         <tbody>
                             {petList}
                         </tbody>
@@ -59,6 +55,7 @@ class PetList extends Component {
 
 PetList.propTypes = {
     petIds: PropTypes.array.isRequired,
+    ownerId: PropTypes.number
 };
   
 export default PetList;

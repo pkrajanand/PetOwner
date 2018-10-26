@@ -33,17 +33,15 @@ class OwnerList extends Component {
                 <td>{name}</td>
                 <td>{owner.city}</td>
                 <td>
-                        <div>
-                            <Container fluid>
-                                <Table className="mt-4">
-                                    <tbody>
-                                        <PetList petIds={owner.petIds}></PetList>
-                                    </tbody>
-                                </Table>
-                            </Container>
-                        </div>
-                     
-                    
+                    <div>
+                        <Container fluid>
+                            <Table className="mt-4">
+                                <tbody>
+                                    <PetList petIds={owner.petIds} ownerId={owner.id}></PetList>
+                                </tbody>
+                            </Table>
+                        </Container>
+                    </div>                                
                 </td>
             </tr>
         });
