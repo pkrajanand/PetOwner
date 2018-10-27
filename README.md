@@ -12,6 +12,18 @@ A small application which achieves the following:
 
 ## Development Environment
 
+### System Requirements
+
+JDK 1.8
+Maven 3.5+
+npm 6.4+
+
+### Dev Stack
+Spring Boot 2.0.6
+JDK 1.8
+ReactJs
+H2 in-memory DB
+
 ### Backend 
 
 Run `mvn install` to get everything downloaded and make sure you're good on that front.
@@ -22,8 +34,11 @@ Run `mvn spring-boot:run` to start the back end (spring-boot based) server, so t
 
 ### Frontend
 
-`cd frontend`
-`npm start`
+```
+cd frontend
+npm start
+
+```
 
 
 ## Database Console
