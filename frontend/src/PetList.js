@@ -6,40 +6,24 @@ import PetItem from './PetItem';
 class PetList extends Component {
     constructor(props, context) {
         super(props, context);
-        this.state = { pets: [], isLoading: true };
     }
 
-    componentDidMount() {
-        this.setState({ isLoading: true });
-
-        fetch('/pets')
-            .then(response => response.json())
-            .then(data => this.setState({ pets: data, isLoading: false }));
-    }
-
-    handleAddPetItem(pet, pets){
-        pets.push(pet);   
-        this.setState({pets:pets});
+    handleAddPetItem(pet){
+        this.props.onAddPet(pet);   
     }
 
     render() {
-        const { pets, isLoading } = this.state;
-        const { petIds, ownerId } = this.props;
-
-        if (isLoading) {
-            return <p>Loading Pets...</p>;
-        }
+        const { pets, petIds, ownerId } = this.props;
 
         const petList = pets
             .filter(pet => petIds.find(pId => pId === pet.id) )
             .map (pet => {
                 return <PetItem pet={pet} ownerId={ownerId} pets={pets}></PetItem>
-        });
+            });
 
-        petList.push(<PetItem ownerId={ownerId} onPetAdded={pet => this.handleAddPetItem(pet, pets)}></PetItem>);
+        petList.push(<PetItem ownerId={ownerId} onPetAdded={pet => this.handleAddPetItem(pet)}></PetItem>);
 
         return (
-            <div>
                 <Container fluid>
                     <Table>
                         <tbody>
@@ -47,13 +31,13 @@ class PetList extends Component {
                         </tbody>
                     </Table>
                 </Container>
-            </div>
         );
     }
 }
 
 PetList.propTypes = {
     petIds: PropTypes.array.isRequired,
+    pets: PropTypes.array.isRequired,
     ownerId: PropTypes.number
 };
   

@@ -5,7 +5,7 @@ import PetList from './PetList';
 class OwnerList extends Component {
     constructor(props) {
         super(props);
-        this.state = { owners: [], isLoading: true };
+        this.state = { owners: [], pets: [], isLoading: true };
     }
 
     componentDidMount() {
@@ -14,6 +14,18 @@ class OwnerList extends Component {
         fetch('/owners')
             .then(response => response.json())
             .then(data => this.setState({ owners: data, isLoading: false }));
+
+        fetch('/pets')
+            .then(response => response.json())
+            .then(data => this.setState({ pets: data, isLoading: false }));            
+    }
+
+    handleAddPetItem(pet){
+        this.setState({pets: [
+                ...this.state.pets,
+                pet
+        ] });
+        console.log ('state is updated: added  pet.id ' + pet.id + " to for the total pets to be " + this.state.pets.length);
     }
 
     render() {
@@ -35,7 +47,9 @@ class OwnerList extends Component {
                         <Container fluid>
                             <Table className="mt-4">
                                 <tbody>
-                                    <PetList petIds={owner.petIds} ownerId={owner.id}></PetList>
+                                    <PetList pets={this.state.pets} petIds={owner.petIds} ownerId={owner.id}
+                                        onAddPet={pet => this.handleAddPetItem(pet)}>
+                                    </PetList>
                                 </tbody>
                             </Table>
                         </Container>

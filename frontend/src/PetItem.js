@@ -20,11 +20,12 @@ class PetItem extends Component {
             {
                 method: 'POST',
                 headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                // body: JSON.stringify({'name':'abc', 'birthday': '16/09/2018', 'ownerId': {id: '-3'} })
                 body: JSON.stringify({"name": newPetName, "birthday": newPetBirthday, "ownerId": {'id': newPetOwnerId}})
             }
-        ).then(data => { 
-            this.props.onPetAdded(data);   
+        )
+        .then(response => response.json())
+        .then(json => {
+            this.props.onPetAdded(json);   
         });
     }
 
