@@ -20,6 +20,11 @@ Run `mvn test` to run the back-end tests
 
 Run `mvn spring-boot:run` to start the back end (spring-boot based) server, so that api endpoints are available at `http://localhost:8080`
 
+### Frontend
+
+`cd frontend`
+`npm start`
+
 
 ## Database Console
 
