@@ -67,7 +67,7 @@ class PetItem extends Component {
 
                     </td>
                     <td>
-                        <Button size="sm" color="primary" onClick={() => this.addPet(ownerId, newPetName, newPetBirthday)}>Add New</Button>
+                        <Button size="sm" color="primary" onClick={() => this.addPet(ownerId, newPetName, newPetBirthday)}>Add Pet & Refresh Page</Button>
                     </td>
                 </tr>
             )
