@@ -8,4 +8,4 @@ spring:
     name: petowner
     username: petowner
     password: petowner
-    url: jdbc:h2:petowner;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;
+    url: jdbc:h2:mem:petowner;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;
