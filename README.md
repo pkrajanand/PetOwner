@@ -40,9 +40,11 @@ npm start
 
 ```
 
-
 ## Database Console
 
 If you want to query the database, you can access [http://localhost:8080/h2-console](http://localhost:8080/h2-console).
 You can find the necessary connection details in src/main/resources/application.yml
  
+## Open Issues
+
+https://github.com/pkrajanand/PetOwner/issues 
