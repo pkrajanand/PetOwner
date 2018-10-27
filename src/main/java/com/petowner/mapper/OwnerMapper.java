@@ -1,10 +1,10 @@
-package com.genbook.petowner.mapper;
+package com.petowner.mapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.genbook.petowner.dto.OwnerDto;
-import com.genbook.petowner.entity.Owner;
+import com.petowner.dto.OwnerDto;
+import com.petowner.entity.Owner;
 
 public class OwnerMapper {
 

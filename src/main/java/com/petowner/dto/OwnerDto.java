@@ -1,9 +1,9 @@
-package com.genbook.petowner.dto;
+package com.petowner.dto;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.genbook.petowner.entity.Owner;
+import com.petowner.entity.Owner;
 
 public class OwnerDto {
 

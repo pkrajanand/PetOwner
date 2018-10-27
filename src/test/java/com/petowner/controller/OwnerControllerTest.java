@@ -1,4 +1,4 @@
-package com.genbook.petowner;
+package com.petowner.controller;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -17,10 +17,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.genbook.petowner.controller.OwnerController;
-import com.genbook.petowner.entity.Owner;
-import com.genbook.petowner.entity.Pet;
-import com.genbook.petowner.repository.OwnerRepository;
+import com.petowner.controller.OwnerController;
+import com.petowner.entity.Owner;
+import com.petowner.entity.Pet;
+import com.petowner.repository.OwnerRepository;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(OwnerController.class)

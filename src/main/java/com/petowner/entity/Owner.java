@@ -1,4 +1,4 @@
-package com.genbook.petowner.entity;
+package com.petowner.entity;
 
 import java.util.List;
 

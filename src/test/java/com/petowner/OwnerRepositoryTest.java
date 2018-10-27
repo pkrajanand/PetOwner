@@ -1,4 +1,4 @@
-package com.genbook.petowner;
+package com.petowner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.genbook.petowner.entity.Owner;
-import com.genbook.petowner.repository.OwnerRepository;
+import com.petowner.entity.Owner;
+import com.petowner.repository.OwnerRepository;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)

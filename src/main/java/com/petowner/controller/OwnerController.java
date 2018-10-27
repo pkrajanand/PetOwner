@@ -1,4 +1,4 @@
-package com.genbook.petowner.controller;
+package com.petowner.controller;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.genbook.petowner.dto.OwnerDto;
-import com.genbook.petowner.entity.Owner;
-import com.genbook.petowner.mapper.OwnerMapper;
-import com.genbook.petowner.repository.OwnerRepository;
+import com.petowner.dto.OwnerDto;
+import com.petowner.entity.Owner;
+import com.petowner.mapper.OwnerMapper;
+import com.petowner.repository.OwnerRepository;
 
 
 @RestController

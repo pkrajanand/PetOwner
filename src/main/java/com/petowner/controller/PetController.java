@@ -1,4 +1,4 @@
-package com.genbook.petowner.controller;
+package com.petowner.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.genbook.petowner.entity.Owner;
-import com.genbook.petowner.entity.Pet;
-import com.genbook.petowner.repository.OwnerRepository;
-import com.genbook.petowner.repository.PetRepository;
+import com.petowner.entity.Owner;
+import com.petowner.entity.Pet;
+import com.petowner.repository.OwnerRepository;
+import com.petowner.repository.PetRepository;
 
 @RestController
 @CrossOrigin
