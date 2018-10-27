@@ -14,15 +14,21 @@ A small application which achieves the following:
 
 ### System Requirements
 
-JDK 1.8
-Maven 3.5+
-npm 6.4+
+> JDK 1.8
+
+> Maven 3.5+
+
+> npm 6.4+
 
 ### Dev Stack
-Spring Boot 2.0.6
-JDK 1.8
-ReactJs
-H2 in-memory DB
+
+> Spring Boot 2.0.6
+
+> JDK 1.8
+
+> ReactJs
+
+> H2 in-memory DB
 
 ### Backend 
 
