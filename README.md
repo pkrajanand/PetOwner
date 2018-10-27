@@ -36,7 +36,7 @@ Run `mvn install` to get everything downloaded and make sure you're good on that
 
 Run `mvn test` to run the back-end tests
 
-Run `mvn spring-boot:run` to start the back end (spring-boot based) server, so that api endpoints are available at `http://localhost:8080`
+Run `mvn spring-boot:run` to start the back end (spring-boot based) server, so that api endpoints are available at `http://localhost:8080/owners`
 
 ### Frontend
 
@@ -45,6 +45,7 @@ cd frontend
 npm start
 
 ```
+Access the app at `http://localhost:3000/` and use "Add New & Refresh Page" button to add more pets for the owners.
 
 ## Database Console
 
