@@ -14,8 +14,6 @@ class PetItem extends Component {
 
     addPet(newPetOwnerId, newPetName, newPetBirthday) {
 
-        this.setState({ isLoading: true });
-
         fetch(`/pets`,
             {
                 method: 'POST',
@@ -24,8 +22,8 @@ class PetItem extends Component {
             }
         )
         .then(response => response.json())
-        .then(json => {
-            this.props.onPetAdded(json);   
+        .then(data => {
+            this.props.onPetAdded(data);   
         });
     }
 
@@ -43,47 +41,39 @@ class PetItem extends Component {
 
         let petDetails;
         if (pet) {
-            petDetails = (
-                <tr>
-                    <td>{pet.id}</td>
-                    <td>{pet.name}</td>
-                    <td>{pet.birthday}</td>
-                    <td></td>
-                </tr>
-            )
+            petDetails = <tr>
+                            <td>{pet.id}</td>
+                            <td>{pet.name}</td>
+                            <td>{pet.birthday}</td>
+                            <td></td>
+                        </tr>
         } else {            
-            petDetails = (
-                <tr>
-                    <td>
-                        
-                    </td>
-                    <td>
-                        Pet Name: 
-                        <input type="text" onChange={(e) => this.updateNewPetName(e)}/>
-                    </td>
-                    <td>
-                        Birthday:
-                        <input type="text" onChange={(e) => this.updateNewPetBirthday(e)}/>
+            petDetails = <tr>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                Pet Name: 
+                                <input type="text" onChange={(e) => this.updateNewPetName(e)}/>
+                            </td>
+                            <td>
+                                Birthday:
+                                <input type="text" onChange={(e) => this.updateNewPetBirthday(e)}/>
 
-                    </td>
-                    <td>
-                        <Button size="sm" color="primary" onClick={() => this.addPet(ownerId, newPetName, newPetBirthday)}>Add Pet & Refresh Page</Button>
-                    </td>
-                </tr>
-            )
+                            </td>
+                            <td>
+                                <Button size="sm" color="primary" onClick={() => this.addPet(ownerId, newPetName, newPetBirthday)}>Add Pet & Refresh Page</Button>
+                            </td>
+                        </tr>
         }
-        return (
-            <div>
-                {petDetails}
-            </div>
-        );
+        return {petDetails};
 
     }
 }
 
 PetItem.propTypes = {
-    pet: PropTypes.array.isRequired,
-    pets: PropTypes.array.isRequired,
+    pet: PropTypes.JSON,
+    pets: PropTypes.array,
     ownerId: PropTypes.number
 };
 

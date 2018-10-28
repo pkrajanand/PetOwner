@@ -6,6 +6,8 @@ class OwnerList extends Component {
     constructor(props) {
         super(props);
         this.state = { owners: [], pets: [], isLoading: true };
+
+        this.handleAddPetItem = this.handleAddPetItem.bind(this)
     }
 
     componentDidMount() {
@@ -21,11 +23,17 @@ class OwnerList extends Component {
     }
 
     handleAddPetItem(pet){
-        this.setState({pets: [
-                ...this.state.pets,
-                pet
-        ] });
-        console.log ('state is updated: added  pet.id ' + pet.id + " to for the total pets to be " + this.state.pets.length);
+
+        const owner = this.state.owners.find(owner => {
+            return (owner.id === pet.ownerId);
+        });
+        owner.petIds.push(pet.id);
+
+        const newLocal = this.state.pets.concat(pet);
+        this.setState({
+            pets: newLocal,
+            isLoading: false
+        });
     }
 
     render() {
@@ -38,24 +46,20 @@ class OwnerList extends Component {
         const ownerList = owners.map(owner => {
             const name = `${owner.firstName} ${owner.lastName}`;
 
-            return <tr key={owner.id}>
-                <td>{owner.id}</td>
-                <td>{name}</td>
-                <td>{owner.city}</td>
-                <td>
-                    <div>
-                        <Container fluid>
-                            <Table className="mt-4">
-                                <tbody>
-                                    <PetList pets={this.state.pets} petIds={owner.petIds} ownerId={owner.id}
-                                        onAddPet={pet => this.handleAddPetItem(pet)}>
-                                    </PetList>
-                                </tbody>
-                            </Table>
-                        </Container>
-                    </div>                                
-                </td>
-            </tr>
+            return  <tr key={owner.id}>
+                        <td>{owner.id}</td>
+                        <td>{name}</td>
+                        <td>{owner.city}</td>
+                        <td>
+                                <Container fluid>
+                                    <Table className="mt-4">
+                                            <PetList pets={this.state.pets} petIds={owner.petIds} ownerId={owner.id}
+                                                onAddPet={pet => this.handleAddPetItem(pet)}>
+                                            </PetList>
+                                    </Table>
+                                </Container>
+                        </td>
+                    </tr>
         });
 
         return (
