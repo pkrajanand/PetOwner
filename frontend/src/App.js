@@ -11,7 +11,6 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          {/* <Route path='/owners' exact={true} component={OwnerList}/> */}
           <OwnerList></OwnerList>
         </Switch>
       </Router>
