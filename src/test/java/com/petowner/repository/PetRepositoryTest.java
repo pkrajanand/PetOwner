@@ -30,13 +30,13 @@ public class PetRepositoryTest {
 
     List<Pet> findAll = petRepository.findAll();
 
-    assertThat(findAll).hasSize(0);
+    assertThat(findAll).hasSize(4);
   }
 
   @Test
   public void testRepositoryCreatePet() {
 
-    assertThat(petRepository.findAll()).hasSize(0);
+    assertThat(petRepository.findAll()).hasSize(4);
 
     Owner owner1 = ownerRepository.findById(999999L).get();
     Pet pet1 = new Pet("pet1", "16/05/1999", owner1);
@@ -48,6 +48,6 @@ public class PetRepositoryTest {
     assertThat(saved.getOwner().getId()).isEqualTo(999999L);
     assertThat(saved.getId()).isNotNull();
 
-    assertThat(petRepository.findAll()).hasSize(1);
+    assertThat(petRepository.findAll()).hasSize(5);
   }
 }
