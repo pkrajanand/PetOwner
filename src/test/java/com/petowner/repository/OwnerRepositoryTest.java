@@ -1,4 +1,4 @@
-package com.petowner;
+package com.petowner.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,7 +39,7 @@ public class OwnerRepositoryTest {
   @Test
   public void testRepositoryGetOneOwner() {
   	
-		assertThat(ownerRepository.findById(1L).get().getFirstName().equals("Some1"));
+		assertThat(ownerRepository.findById(999999L).get().getFirstName().equals("Some1"));
 		
   }
 
@@ -48,7 +48,7 @@ public class OwnerRepositoryTest {
 
 		assertThat(ownerRepository.findAll()).hasSize(3);
 
-		ownerRepository.deleteById(1L);
+		ownerRepository.deleteById(999999L);
 		
 		assertThat(ownerRepository.findAll()).hasSize(2);
   }

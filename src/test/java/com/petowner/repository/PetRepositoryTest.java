@@ -26,30 +26,28 @@ public class PetRepositoryTest {
   private OwnerRepository ownerRepository;
 
   @Test
-  public void testRepositoryIsPopulated() {
+  public void testRepositoryFetch() {
 
     List<Pet> findAll = petRepository.findAll();
 
-    assertThat(findAll).hasSize(4);
-
-    assertThat(findAll.get(0).getOwner().getId().equals(-1L));
+    assertThat(findAll).hasSize(0);
   }
 
   @Test
   public void testRepositoryCreatePet() {
 
-    assertThat(petRepository.findAll()).hasSize(4);
+    assertThat(petRepository.findAll()).hasSize(0);
 
-    Owner owner1 = ownerRepository.findById(-1L).get();
+    Owner owner1 = ownerRepository.findById(999999L).get();
     Pet pet1 = new Pet("pet1", "16/05/1999", owner1);
 
     Pet saved = petRepository.save(pet1);
     
     assertThat(saved.getBirthday()).isEqualTo("16/05/1999");
     assertThat(saved.getName()).isEqualTo("pet1");
-    assertThat(saved.getOwner().getId()).isEqualTo(-1L);
+    assertThat(saved.getOwner().getId()).isEqualTo(999999L);
     assertThat(saved.getId()).isNotNull();
 
-    assertThat(petRepository.findAll()).hasSize(5);
+    assertThat(petRepository.findAll()).hasSize(1);
   }
 }
