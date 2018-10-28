@@ -13,13 +13,21 @@ class OwnerList extends Component {
     componentDidMount() {
         this.setState({ isLoading: true });
 
+        this.fetchOwners();
+
+        this.fetchPets();            
+    }
+
+    fetchPets() {
+        fetch('/pets')
+            .then(response => response.json())
+            .then(data => this.setState({ pets: data, isLoading: false }));
+    }
+
+    fetchOwners() {
         fetch('/owners')
             .then(response => response.json())
             .then(data => this.setState({ owners: data, isLoading: false }));
-
-        fetch('/pets')
-            .then(response => response.json())
-            .then(data => this.setState({ pets: data, isLoading: false }));            
     }
 
     handleAddPetItem(pet){
@@ -66,7 +74,7 @@ class OwnerList extends Component {
             <div>
                 <Container fluid>
                     <h3>Pet Owners</h3>
-                    <Table className="mt-4">
+                    <Table className="mt-4 owners">
                         <thead>
                             <tr>
                                 <th>ID</th>
