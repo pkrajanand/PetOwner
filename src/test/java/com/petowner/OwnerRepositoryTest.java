@@ -31,7 +31,7 @@ public class OwnerRepositoryTest {
 
 		Owner owner = new Owner("Some1", "body1",  "city1");
 		
-		assertThat(ownerRepository.save(owner).equals(new Owner(1L, "Some1", "body1",  "city1")));
+		assertThat(ownerRepository.save(owner).equals(new Owner(4L, "Some1", "body1",  "city1")));
 		
 		assertThat(ownerRepository.findAll()).hasSize(4);
   }
@@ -39,7 +39,7 @@ public class OwnerRepositoryTest {
   @Test
   public void testRepositoryGetOneOwner() {
   	
-		assertThat(ownerRepository.findById(-1L).get().getFirstName().equals("Some1"));
+		assertThat(ownerRepository.findById(1L).get().getFirstName().equals("Some1"));
 		
   }
 
@@ -48,7 +48,7 @@ public class OwnerRepositoryTest {
 
 		assertThat(ownerRepository.findAll()).hasSize(3);
 
-		ownerRepository.deleteById(-1L);
+		ownerRepository.deleteById(1L);
 		
 		assertThat(ownerRepository.findAll()).hasSize(2);
   }
