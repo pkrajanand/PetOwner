@@ -64,7 +64,7 @@ class PetList extends Component {
                                     <input type="text" onChange={(e) => this.updateNewPetBirthday(e)}/>
                                 </td>
                                 <td>
-                                    <Button size="sm" color="primary" onClick={() => this.addPet(ownerId, newPetName, newPetBirthday)}>Add Pet & Refresh Page</Button>
+                                    <Button size="sm" color="primary" onClick={() => this.addPet(ownerId, newPetName, newPetBirthday)}>Add Pet</Button>
                                 </td>
                             </tr>
 
