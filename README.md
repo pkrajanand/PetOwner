@@ -1,13 +1,12 @@
 # PetOwner
 
-A small application which achieves the following:
+1. An in-memory H2 database with two tables PET & OWNER. Setup data consists of 3 owner records and 4 pet records that are owned by different owners.
 
-1. Create a database with two tables PET & OWNER with at least 3 records each (owners linked to pets) using a DB of your choice
-2. Create a java application which exposes three HTTP JSON REST APIs (feel free to choose any Java framework you are familiar with):   
+2. A backend application that exposes three HTTP JSON REST APIs  
 	1. GET /owners (list all owners (first name, last name, city, pet_id))
 	2. GET /pets (list all pets (name, birthday, owner_id))
 	3. POST /pet (create new pet record)
-3. Create a React (webpack) SPA (feel free to use a boilerplate of your choice) which interfaces with the Java based API to list owners, pets and create new pets.
+3. A frontend that connects to backend server mentioned above to list owners, pets and create new pets.
 
 
 ## Development Environment
@@ -42,8 +41,8 @@ Run `mvn spring-boot:run` to start the back end (spring-boot based) server, so t
 
 ```
 cd frontend
+npm test
 npm start
-
 ```
 Access the app at `http://localhost:3000/` and use "Add New & Refresh Page" button to add more pets for the owners.
 
